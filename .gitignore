@@ -1,0 +1,17 @@
+# Eclipse/STS workspace
+.metadata/
+quiz-backend/.metadata/
+.settings/
+.classpath
+.project
+
+# Backend sensitive files
+quiz-backend/.env
+quiz-backend/target/
+
+# Frontend
+quiz-frontend/node_modules/
+quiz-frontend/dist/
+quiz-frontend/.env
+quiz-frontend/.env.production
+quiz-frontend/.env.local
