@@ -107,8 +107,8 @@ export default function TeacherQuizzes() {
 
   const getStatus = (quiz) => {
     const now = new Date()
-    const start = new Date(quiz.startTime)
-    const end = new Date(quiz.endTime)
+    const start = new Date(quiz.startTime + 'Z')
+const end = new Date(quiz.endTime + 'Z')
     if (now < start) return { label: 'UPCOMING', color: 'bg-yellow-100 text-yellow-700' }
     if (now > end) return { label: 'ENDED', color: 'bg-gray-100 text-gray-600' }
     return { label: 'ACTIVE', color: 'bg-green-100 text-green-700' }
@@ -149,8 +149,8 @@ export default function TeacherQuizzes() {
                         </span>
                       </div>
                       <div className="text-sm text-gray-500 space-y-0.5">
-                        <div>🕐 Start: {new Date(q.startTime).toLocaleString()}</div>
-                        <div>🕐 End: {new Date(q.endTime).toLocaleString()}</div>
+                        <div>🕐 Start: {new Date(q.startTime + 'Z').toLocaleString()}</div>
+                        <div>🕐 End: {new Date(q.endTime + 'Z').toLocaleString()}</div>
                         <div>⏱ Duration: {q.durationMinutes} minutes</div>
                         <div>❓ Questions: {q.questions?.length || 0}</div>
                       </div>
