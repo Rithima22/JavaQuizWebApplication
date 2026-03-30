@@ -10,6 +10,13 @@ export default function QuizStats() {
   const [stats, setStats] = useState([])
   const [loading, setLoading] = useState(true)
 
+  const formatTime = (utcString) => {
+    return new Date(utcString + 'Z').toLocaleString(undefined, {
+      day: '2-digit', month: 'short', year: 'numeric',
+      hour: '2-digit', minute: '2-digit', hour12: true
+    })
+  }
+  
   useEffect(() => {
     getQuizStatsApi(id)
       .then(res => setStats(res.data))
@@ -82,7 +89,7 @@ export default function QuizStats() {
                       </td>
                       <td className="px-6 py-3 text-gray-500">
                         {s.submitTime
-                          ? new Date(s.submitTime + 'Z').toLocaleString()
+                          ? formatTime(s.submitTime)
                           : '-'}
                       </td>
                     </tr>
