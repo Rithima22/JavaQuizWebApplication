@@ -63,7 +63,7 @@ export default function StudentResults() {
                         {r.quizTitle}
                       </h3>
                       <div className="text-sm text-gray-500 space-y-0.5">
-                        <div>📅 Submitted: {new Date(r.submitTime).toLocaleString()}</div>
+                        <div>📅 Submitted: {new Date(r.submitTime + 'Z').toLocaleString()}</div>
                         <div>❓ Questions: {r.totalQuestions}</div>
                       </div>
                     </div>
