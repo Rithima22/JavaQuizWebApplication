@@ -74,8 +74,20 @@ export default function TeacherQuizzes() {
       return
     }
     try {
-      if (editQuiz) await updateQuizApi(editQuiz.id, form)
-      else await createQuizApi(form)
+      // Convert local datetime to UTC ISO string for backend
+      const toUTC = (localDatetime) => {
+        if (!localDatetime) return localDatetime
+        return new Date(localDatetime).toISOString().slice(0, 19)
+      }
+
+      const payload = {
+        ...form,
+        startTime: toUTC(form.startTime),
+        endTime: toUTC(form.endTime),
+      }
+
+      if (editQuiz) await updateQuizApi(editQuiz.id, payload)
+      else await createQuizApi(payload)
       setShowModal(false)
       fetchData()
     } catch (err) {
