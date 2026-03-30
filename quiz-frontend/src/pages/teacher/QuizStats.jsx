@@ -82,7 +82,7 @@ export default function QuizStats() {
                       </td>
                       <td className="px-6 py-3 text-gray-500">
                         {s.submitTime
-                          ? new Date(s.submitTime).toLocaleString()
+                          ? new Date(s.submitTime + 'Z').toLocaleString()
                           : '-'}
                       </td>
                     </tr>
