@@ -85,8 +85,8 @@ export default function StudentDashboard() {
                     </div>
                     <div className="text-sm text-gray-500 space-y-0.5">
                       <div>👨‍🏫 Teacher: {q.teacherUsername}</div>
-                      <div>🕐 Start: {new Date(q.startTime).toLocaleString()}</div>
-                      <div>🕐 End: {new Date(q.endTime).toLocaleString()}</div>
+                      <div>🕐 Start: {new Date(q.startTime + 'Z').toLocaleString()}</div>
+                      <div>🕐 End: {new Date(q.endTime + 'Z').toLocaleString()}</div>
                       <div>⏱ Duration: {q.durationMinutes} minutes</div>
                     </div>
                   </div>
