@@ -11,6 +11,13 @@ export default function StudentResults() {
   const [loading, setLoading] = useState(true)
   const message = location.state?.message
 
+  const formatTime = (utcString) => {
+    return new Date(utcString + 'Z').toLocaleString(undefined, {
+      day: '2-digit', month: 'short', year: 'numeric',
+      hour: '2-digit', minute: '2-digit', hour12: true
+    })
+  }
+  
   useEffect(() => {
     getMyResultsApi()
       .then(res => setResults(res.data))
@@ -63,7 +70,7 @@ export default function StudentResults() {
                         {r.quizTitle}
                       </h3>
                       <div className="text-sm text-gray-500 space-y-0.5">
-                        <div>📅 Submitted: {new Date(r.submitTime + 'Z').toLocaleString()}</div>
+                        <div>📅 Submitted: {formatTime(r.submitTime)}</div>
                         <div>❓ Questions: {r.totalQuestions}</div>
                       </div>
                     </div>
