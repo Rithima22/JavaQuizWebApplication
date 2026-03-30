@@ -18,6 +18,13 @@ export default function StudentDashboard() {
       .finally(() => setLoading(false))
   }, [])
 
+  const formatTime = (utcString) => {
+    return new Date(utcString + 'Z').toLocaleString(undefined, {
+      day: '2-digit', month: 'short', year: 'numeric',
+      hour: '2-digit', minute: '2-digit', hour12: true
+    })
+  }
+  
   const statusStyle = {
     ACTIVE: 'bg-green-100 text-green-700',
     UPCOMING: 'bg-yellow-100 text-yellow-700',
@@ -85,8 +92,8 @@ export default function StudentDashboard() {
                     </div>
                     <div className="text-sm text-gray-500 space-y-0.5">
                       <div>👨‍🏫 Teacher: {q.teacherUsername}</div>
-                      <div>🕐 Start: {new Date(q.startTime + 'Z').toLocaleString()}</div>
-                      <div>🕐 End: {new Date(q.endTime + 'Z').toLocaleString()}</div>
+                      <div>🕐 Start: {formatTime(q.startTime)}</div>
+                      <div>🕐 End: {formatTime(q.endTime)}</div>
                       <div>⏱ Duration: {q.durationMinutes} minutes</div>
                     </div>
                   </div>
