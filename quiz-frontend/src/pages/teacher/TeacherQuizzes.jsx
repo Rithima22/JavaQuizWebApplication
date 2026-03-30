@@ -21,6 +21,13 @@ export default function TeacherQuizzes() {
   const [form, setForm] = useState(EMPTY)
   const [error, setError] = useState('')
 
+  const formatTime = (utcString) => {
+    return new Date(utcString + 'Z').toLocaleString(undefined, {
+      day: '2-digit', month: 'short', year: 'numeric',
+      hour: '2-digit', minute: '2-digit', hour12: true
+    })
+  }
+  
   const fetchData = async () => {
     try {
       const [qzRes, qRes] = await Promise.all([
@@ -149,8 +156,8 @@ const end = new Date(quiz.endTime + 'Z')
                         </span>
                       </div>
                       <div className="text-sm text-gray-500 space-y-0.5">
-                        <div>🕐 Start: {new Date(q.startTime + 'Z').toLocaleString()}</div>
-                        <div>🕐 End: {new Date(q.endTime + 'Z').toLocaleString()}</div>
+                        <div>🕐 Start: {formatTime(q.startTime)}</div>
+                        <div>🕐 End: {formatTime(q.endTime)}</div>
                         <div>⏱ Duration: {q.durationMinutes} minutes</div>
                         <div>❓ Questions: {q.questions?.length || 0}</div>
                       </div>
